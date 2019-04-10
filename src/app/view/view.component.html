@@ -1,0 +1,48 @@
+<app-project-nav>
+  <p-table #dt [columns]="cols" [paginator]="true" [rows]="10" rowHover="true" [value]="projectList" sortMode="multipl"
+    class="table-table dark">
+    <ng-template pTemplate="caption">
+      <div style="text-align: right">
+        <input type="text" pInputText size="50" placeholder="Global Filter"
+          (input)="dt.filterGlobal($event.target.value, 'contains')" style="width:auto">
+      </div>
+      <div style="text-align: left" class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+        <button data-toggle="tooltip" title="Add New Project" class="btn btn-success"
+          (click)="getNavigation('create', '')"> <i class="fa fa-plus-square"> Add New Project</i></button>
+      </div>
+      <div style="text-align: left">
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+      <tr>
+        <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+          {{col.header}}
+          <p-sortIcon [field]="col.field"></p-sortIcon>
+        </th>
+        <th>Actions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-car let-columns="columns" let-rowData let-rowIndex="rowIndex">
+      <tr>
+        <td *ngFor="let col of columns">
+          {{car[col.field]}}
+        </td>
+        <td>
+          <button data-toggle="tooltip" title="View Employees" type="button" class="btn btn-info"
+            (click)="view(rowData.ProjectId,rowData.ProjectDescription)"> <i class="fa fa-eye"
+              style="font: size 3px"></i> </button>&nbsp;
+          <button data-toggle="tooltip" title="Edit Project Details" type="button" class="btn btn-warning"
+            (click)="Edit(rowData.ProjectId,rowIndex)" alt="Mail"> <i class="fa fa-edit" alt="Mail "
+              style="font: size 3px"></i> </button>&nbsp;
+          <button data-toggle="tooltip" title="Archive Project" type="button" class="btn btn-danger"
+            (click)="archiveProject(rowData.ProjectId)" alt="Mail"> <i class="fa fa-archive" alt="Mail "
+              style="font: size 3px"></i> </button>&nbsp;
+          <button data-toggle="tooltip" title="Add Employees " type="button" class="btn btn-primary"
+            (click)="view(rowData.ProjectId,rowData.ProjectDescription)" alt="Mail"> <i class="fa fa-plus" alt="Mail "
+              style="font: size 3px"></i> </button>
+        </td>
+      </tr>
+      <p-toast [style]="{marginTop: '80px'}"></p-toast>
+    </ng-template>
+  </p-table>
+</app-project-nav>

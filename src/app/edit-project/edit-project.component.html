@@ -1,0 +1,49 @@
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close class="btn btn-default btn-xs" style="margin-left:95%"><i class="fa fa-times" aria-hidden="true"></i></button>
+</mat-dialog-actions>
+<br>
+<div class="card card-body">
+  <form #form="ngForm" (submit)="Save(form)">
+    <div class="form-group row">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Project Title</label>
+      <div class="col-sm-7">
+        <input type="email" class="form-control" id="colFormLabel" placeholder="ProjectTitle" name="ProjectTitle"
+          #ProjectTitle="ngModel" [(ngModel)]="dataservice.formData.ProjectTitle" readonly>
+      </div>
+    </div>
+    <br>
+    <div class="form-group row">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Project ID </label>
+      <div class="col-sm-7">
+        <input type="email" class="form-control" id="colFormLabel" placeholder="ProjectId" name="ProjectId"
+          #ProjectId="ngModel" [(ngModel)]="dataservice.formData.ProjectId" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Project Desciption</label>
+      <div class="col-sm-7">
+        <input type="email" class="form-control" id="colFormLabel" placeholder="ProjectDescription"
+          name="ProjectDescription" #ProjectDescription="ngModel" [(ngModel)]="dataservice.formData.ProjectDescription"
+          required>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">Start Date</label>
+      <div class="col-sm-5">
+        <input type="email" class="form-control" id="colFormLabel" placeholder="Start Date" name="StartDate"
+          #StartDate="ngModel" [(ngModel)]="dataservice.formData.StartDate" readonly>
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="colFormLabel" class="col-sm-2 col-form-label">End Date</label>
+      <div class="col-sm-5">
+        <input type="email" class="form-control" id="colFormLabel" placeholder="End Date" name="EndDate"
+          #EndDate="ngModel" [(ngModel)]="dataservice.formData.EndDate">
+      </div>
+    </div>
+    <div style="text-align:center">
+    <button  class="btn btn-primary"  mat-raised-button color="primary"
+      type="Submit">Submit!</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close class="btn btn-default btn-xs" style="margin-left:95%"><i class="fa fa-times" aria-hidden="true"></i></button>
+  </mat-dialog-actions>
+  <br>
+  <form #UserForm="ngForm" (submit)="onSubmit(UserForm)">
+    <table class="table table-striped table-dark table-bordered table-hover">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">Select </th>
+          <th scope="col">Project ID</th>
+          <th scope="col">Tech</th>
+          <th scope="col">Project Title</th>
+          <th scope="col">Role </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let e of EmployeeProjects; let i=index" style="color:black">
+          <th> <input [id]="'empProjects'+i" type="checkbox" value="{{e}}}" [checked]="e.selected"
+              (change)="updateSelectedProjects(i)"> </th>
+          <th scope="col">{{e.ProjectId}}</th>
+          <td scope="col">{{e.EmployeeTech}}</td>
+          <td scope="col">{{e.ProjectTitle}}</td>
+          <td scope="col">{{e.Role}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <button type="submit" class="btn btn-default btn-primary">
+      <span class="glyphicon glyphicon-user">Customize</span>
+    </button>
+  </form>
+</mat-dialog-content>

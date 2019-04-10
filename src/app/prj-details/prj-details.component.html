@@ -1,0 +1,95 @@
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close><i class="fa fa-times" aria-hidden="true"></i></button>
+</mat-dialog-actions>
+<br>
+<mat-dialog-content>
+  <hr>
+  <div class="alert alert-dark" role="alert">
+    Project Description: &nbsp;
+    {{projectDescription}}
+  </div>
+  <table class="table table-striped table-dark table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Employee Email</th>
+        <th scope="col">Employee Name</th>
+        <th scope="col">Roles</th>
+        <th scope="col">Tech Stack</th>
+        <th scope="col">Action </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let e of projectDtl" style="color:black">
+        <td scope="col">{{e.EmployeeEmail}}</td>
+        <td scope="col">{{e.EmployeeName}}</td>
+        <td scope="col">{{e.Role}}</td>
+        <td>{{e.EmployeeTech}}</td>
+        <td>
+          <button type="button" class="btn btn-default btn-primary"
+            (click)="DeleteFromProject(e.ProjectId, e.EmployeeId)">
+            <span class="glyphicon glyphicon-user">Delete</span>
+          </button> &nbsp;
+          <button type="button" class="btn btn-default btn-primary"
+            (click)="ReleaseFromProject(e.ProjectId,e.EmployeeId)">
+            <span class="glyphicon glyphicon-user">Free</span>
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <p>
+      <button [hidden]="dataservice.show" class="btn btn-info" type="button" data-toggle="collapse"
+        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+        Add Members
+      </button>
+    </p>
+    <div class="collapse" id="collapseExample">
+      <div class="card card-body">
+        <form #form="ngForm" (submit)="AddMemberToProject(form)" name="form">
+          <div class="col">
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group col-md-6">
+              <label>Employee Email</label>
+              <input type="text" class="form-control" placeholder="Employee Email" name="EmployeeEmail"
+                #EmployeeEmail="ngModel" [(ngModel)]="model.EmployeeEmail">
+            </div>
+            <br>
+            <div class="form-group col-md-4">
+              <label for="inputState">Tech</label>
+              <select id="inputState" class="form-control" name="EmployeeTech" [(ngModel)]="SelectedTech" required>
+                <option *ngFor="let technology of tech" [ngValue]="technology"> {{technology}} </option>
+                <label>Type:</label>
+              </select>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="form-group col-md-3">
+              <label> Role </label>
+              <input type="text" class="form-control" placeholder="Role" name="Role" #Role="ngModel" [(ngModel)]="aa2"
+                required>
+            </div>
+            <br>
+            <div class="form-group col-md-4">
+              <label> Employee Start Date</label>
+              <input type="date" class="form-control" placeholder="Employee Start Date" name="EmployeeStartDate"
+                #EmployeeStartDate="ngModel" [(ngModel)]="start">
+            </div>
+            <br>
+            <div class="form-group col-md-4">
+              <label> Employee End Date</label>
+              <input type="date" class="form-control" placeholder="Employee End Date" name="EmployeeEndDate"
+                #EmployeeEndDate="ngModel" [(ngModel)]="end">
+            </div>
+          </div>
+          <div style="text-align: center" class="form-group">
+            <button mat-raised-button color="primary" type="Submit"> Submit!</button>&nbsp;
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</mat-dialog-content>

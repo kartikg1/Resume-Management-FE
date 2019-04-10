@@ -1,0 +1,138 @@
+<app-emp-nav>
+  <div *ngIf="employee">
+    <div style="display: flex; justify-content: flex-end; position: sticky">
+      <div>
+        <button type="submit" class="btn btn-info" (click)="downloadPDF()" target="_blank" data-toggle="tooltip"
+          title="Download Resume"> <i class="fa fa-download"></i>
+        </button>
+      </div>
+    </div>
+    <div id="resume">
+      <article class="l-Wrapper">
+        <div class="l-Header">
+          <div class="l-Header-col">
+            <h1 class="Title">
+              <span class="u-shadow">
+                {{this.employee.EmployeeName}}
+              </span>
+              <span class="Title-sub"> {{this.employee.EmployeeDesignation}}</span>
+            </h1>
+          </div>
+          <div class="l-Header-col Contact">
+            <div><img class="u-link" src="https://bit.ly/2VgCnF2"></div>
+          </div>
+        </div>
+        <hr />
+        <a name="profile">
+          <section class="l-Section">
+            <h2 class="l-Section-title h3 u-hidden@sm-down">Personal Information</h2>
+            <div class="l-Section-content">
+              <ul>
+                <li><b>Email: </b>{{employee.EmployeeEmail}}<br /></li>
+                <li><b>Contact No.: </b>{{employee.EmployeePhone}}<br /></li>
+                <li><b>Date Of Birth: </b>{{employee.EmployeeDOB | date}}<br /></li>
+                <li><b>Address: </b>{{employee.EmployeeAddress}}<br /></li>
+              </ul>
+            </div>
+            <div style="display: flex; justify-content: flex-end">
+              <div>
+              </div>
+            </div>
+          </section>
+        </a>
+        <a name="skills">
+          <section class="l-Section">
+            <h2 class="l-Section-title h3">Skills</h2>
+            <div class="l-Section-content">
+              <ul>
+                <li>Highly skilled in creating performant <strong class="Tag">HTML</strong>, <strong
+                    class="Tag"></strong>
+                </li>
+                <li>Passionate about <strong class="Tag">CSS Methodologies</strong> and <strong class="Tag">CSS
+                    Preprocessors</strong></li>
+                <li>Skilled in creating <strong class="Tag">Component Libraries</strong>, <strong
+                    class="Tag">Prototypes</strong> and <strong class="Tag">Style Guides</strong></li>
+                <li>Experienced with <strong class="Tag">Templating Languages</strong> and <strong
+                    class="Tag">JavaScript</strong></li>
+                <li>Proficient with <strong class="Tag">Task Runners</strong> and <strong class="Tag">Package
+                    Managers</strong> and <strong class="Tag">Version Control Systems</strong></li>
+                <li>Knowledgeable about <strong class="Tag">User Experience</strong>, <strong
+                    class="Tag">Accessibility</strong>, <strong class="Tag">Performance</strong>, <strong
+                    class="Tag">Responsive Web Development</strong> with a <strong class="Tag">Mobile First</strong>
+                  approach, <strong class="Tag">Cross-Browser Compatibilities</strong> and <strong
+                    class="Tag">Progressive
+                    Enhancement</strong>.</li>
+              </ul>
+            </div>
+          </section>
+        </a>
+        <hr>
+        <section class="l-Section" style="display: block;">
+          <h1 class="l-Section-title h1">Present Projects</h1>
+          <ng-container *ngFor="let project  of empProjects; let i=index">
+            <div *ngIf="!project.ProjectStatus">
+              <div class="l-Section-content">
+                <ul>
+                  <li>
+                    <h3> <strong class="Tag2">Project {{this.project.ProjectTitle}}
+                      </strong>
+                    </h3>
+                    <br>
+                    {{project.EmployeeStartDate | date:'fullDate'}} to present.
+                    <h5>Project Description</h5>
+                    <ul>
+                      <li>{{this.project.ProjectDescription}}</li>
+                    </ul>
+                    <h5>Technology</h5>
+                    <ul>
+                      <li>{{project.EmployeeTech}}</li>
+                    </ul>
+                    <h5>Role</h5>
+                    <ul>
+                      <li>{{project.Role}}</li>
+                    </ul>
+                    <br>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </ng-container>
+        </section>
+        <section class="l-Section" style="display: block;">
+          <h1 class="l-Section-title h1">Past Projects</h1>
+          <ng-container *ngFor="let project  of empProjects; let i=index">
+            <div *ngIf="project.ProjectStatus">
+              <div class="l-Section-content">
+                <ul style="list-style-type:square;">
+                  <li>
+                    <h3> <strong class="Tag2">Project {{this.project.ProjectTitle}}
+                      </strong>
+                    </h3><br>
+                    {{project.EmployeeStartDate | date}} to {{project.EmployeeEndDate | date}}
+                    <h5>Project Description</h5>
+                    <ul>
+                      <li>{{this.project.ProjectDescription}}</li>
+                    </ul>
+                    <h5>Technology</h5>
+                    <ul>
+                      <li>{{project.EmployeeTech}}</li>
+                    </ul>
+                    <h5>Role</h5>
+                    <ul>
+                      <li>{{project.Role}}</li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </ng-container>
+        </section>
+      </article>
+    </div>
+    <hr>
+    <div class="col-md-3 text-center" style="width:800px; margin:0 auto;">
+      <button type="submit" class="btn btn-info btn-lg" (click)="downloadPDF()" target="_blank"> Download Resume
+      </button>
+    </div>
+  </div>
+</app-emp-nav>
