@@ -1,0 +1,45 @@
+<app-project-nav>
+<div style="width:1000px" class="container">
+  <!-- <div class="row">
+    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-xs-12">
+ <button class="btn btn-success" (click)="getNavigation('create', '')"> <i class="fa fa-plus-square">Add New Project</i></button>
+    </div>
+  </div>
+  <br> -->
+ 
+  <div class="row">
+      <caption><b>List of Archived Projects</b></caption> 
+    <div class="col-12 col-lg-12 col-md-12 col-sm-12 col-xl-12 col-md-12">
+      
+      <!-- <table #productsTable class="display" style="width:100%"> -->
+        <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger"  class="row-border hover" style="width:1000px">
+        
+          <thead>
+        <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Start Date</th>
+        <th>End Date</th> 
+        <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody *ngIf="projects">
+        <tr *ngFor="let p of projects; let i =index;">
+          <td>{{p.ProjectId}}</td>
+          <td>{{p.ProjectTitle}}</td>
+          <td>{{p.ProjectDescription}}</td>
+          <td>{{p.StartDate}}</td>
+          <td>{{p.EndDate}}</td>
+          <td>
+            <button type="button" class="btn btn-success" (click)="view(p.ProjectId,p.ProjectDescription)"><i class="fa fa-eye" style="font: size 3px"></i></button> 
+            &nbsp;<button type="button" class="btn btn-warning" (click)="restoreProject(p.ProjectId)"><i class="fa fa-undo"></i></button>
+            &nbsp; <button type="button" class="btn btn-danger" (click) ="DeleteProject(p.ProjectId)" alt="Mail"> <i class="fa fa-trash" alt ="Mail "style="font: size 3px"></i> </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
+</app-project-nav>

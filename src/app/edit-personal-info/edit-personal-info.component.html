@@ -1,0 +1,37 @@
+<mat-dialog-content>
+
+  <mat-dialog-actions>
+      <button mat-button mat-dialog-close class="btn btn-danger btn-xs" style="margin-left:95%"><i class="fa fa-times" aria-hidden="true"></i></button>
+    </mat-dialog-actions>
+<form #form="ngForm" (submit)="Save(form,details.formData.EmployeeId)">
+  id:<br>
+  <input type="text" data-toggle="tooltip" data-placement="top" title="This is not editable" name="EmployeeId" #EmployeeId="ngModel" [(ngModel)]="details.formData.EmployeeId" readonly>
+   
+ 
+  First name:<br>
+  <input type="text" data-toggle="tooltip" data-placement="top" title="Name is not editable."  name="EmployeeName" #EmployeeName="ngModel" [(ngModel)]="details.formData.EmployeeName" readonly>
+ 
+  Designation<br>
+  <input type="text" name="EmployeeDesignation" #EmployeeDesignation="ngModel"
+    [(ngModel)]="details.formData.EmployeeDesignation">
+ 
+  Phone<br>
+  <input type="text" name="EmployeePhone" #EmployeePhone="ngModel" [(ngModel)]="details.formData.EmployeePhone">
+ 
+  <br>Email<br>
+  <input type="text" name="EmployeeEmail" #EmployeeEmail="ngModel" data-toggle="tooltip" data-placement="top" title="Email is not editable"  [(ngModel)]="details.formData.EmployeeEmail" readonly>
+ 
+  Address:<br>
+  <input type="text" name="EmployeeAddress" #EmployeeAddress="ngModel" [(ngModel)]="details.formData.EmployeeAddress">
+ 
+  DOB:<br>
+  <input type="text" name="EmployeeDOB" #EmployeeDOB="ngModel" [(ngModel)]="details.formData.EmployeeDOB" data-toggle="tooltip" data-placement="top" title="Date of Birth is not editable" readonly>
+  <br>
+ 
+  <br>
+  <button type="submit" style="margin:auto; display: block" class="btn btn-success">Save!</button>
+  &nbsp;
+ </form>
+
+<mat-dialog-content>
+

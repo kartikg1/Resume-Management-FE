@@ -1,0 +1,54 @@
+<app-project-nav>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12 col-lg-12 col-md-12 sol-sm-12">
+      <form [formGroup]="productForm" (ngSubmit)="saveProduct(productForm.value)" >
+        <div class="form-group" >
+          <label>Name</label>
+          <input type="text" class="form-control" placeholder="Enter Project Name" formControlName="name" required>
+          <div class="alert-danger" *ngIf="!productForm.controls['name'].valid && (productForm.controls['name'].touched)">
+            <div [hidden]="!productForm.controls['name'].errors.required">
+              Name is required.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Description</label>
+          <input type="text" class="form-control" placeholder="Description" formControlName="desc" required>
+          <div class="alert-danger" *ngIf="!productForm.controls['desc'].valid && (productForm.controls['desc'].touched)">
+            <div [hidden]="!productForm.controls['desc'].errors.required">
+              Description is required.
+            </div>
+            <div [hidden]="!productForm.controls['desc'].errors.minlength">
+              Description must have 10 character length.
+            </div>
+            <div [hidden]="!productForm.controls['desc'].errors.maxlength">
+              Description must have 1000 character length.
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Start Date</label>
+          <input type="date" class="form-control" placeholder="Start Date" formControlName="sdate" max required>
+          <div class="alert-danger" *ngIf="!productForm.controls['sdate'].valid && (productForm.controls['sdate'].touched)">
+            <div [hidden]="!productForm.controls['sdate'].errors.required">
+              Start Date is required.
+            </div>
+            
+          </div>
+        </div>
+        <div class="form-group">
+          <label>End Date</label>
+          <input type="date" class="form-control" placeholder="End Date" formControlName="edate" required>
+          <div class="alert-danger" *ngIf="!productForm.controls['edate'].valid && (productForm.controls['edate'].touched)">
+            <div [hidden]="!productForm.controls['edate'].errors.required">
+              End Date is required.
+            </div>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary" [disabled]="!productForm.valid">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+</app-project-nav>
